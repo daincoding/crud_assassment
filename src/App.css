@@ -22,7 +22,7 @@
     --ctp-rosewater: #f5e0dc;
 }
 
-/* Optional base styles */
+
 body {
     background-color: var(--ctp-base);
     color: var(--ctp-text);
