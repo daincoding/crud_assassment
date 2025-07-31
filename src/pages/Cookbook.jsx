@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import {useNavigate} from "react-router-dom";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import RecipeComments from "../components/RecipeComments.jsx";
 
 const Cookbook = () => {
 
@@ -74,6 +76,33 @@ const Cookbook = () => {
     };
     //endregion
 
+    //region BONUS 💥
+
+    const [favorites, setFavorites] = useState([]);
+
+    useEffect(() => {
+        const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+        setFavorites(favs);
+    }, []);
+
+    const toggleFavorite = (e, id) => {
+        e.stopPropagation(); // verhindert Klick auf Rezeptauswahl
+        let updated;
+        if (favorites.includes(id)) {
+            updated = favorites.filter(f => f !== id);
+        } else {
+            updated = [...favorites, id];
+        }
+        setFavorites(updated);
+        localStorage.setItem("favorites", JSON.stringify(updated));
+    };
+
+    const handleFavoriteFilter = () => {
+        const favRecipes = recipes.filter(r => favorites.includes(r.id));
+        setFiltered(favRecipes);
+    };
+
+    //endregion
 
     return (
         <div className="flex flex-col md:flex-row gap-4">
@@ -97,18 +126,33 @@ const Cookbook = () => {
                     >
                         Alle
                     </button>
+                    <button
+                        onClick={handleFavoriteFilter}
+                        className="px-2 py-0.5 text-xs rounded-full bg-[var(--ctp-surface2)] text-[var(--ctp-subtext1)] hover:bg-[var(--ctp-yellow)]"
+                    >
+                        Nur Favoriten
+                    </button>
                 </div>
                 <ul className="space-y-2 w-full">
                     {filtered.map((r) => (
                         <li
                             key={r.id}
                             onClick={() => setSelected(r)}
-                            className="cursor-pointer px-4 py-3 rounded border border-[var(--ctp-surface2)] bg-[var(--ctp-surface0)] hover:bg-[var(--ctp-surface1)] relative"
+                            className="cursor-pointer px-4 py-3 rounded border border-[var(--ctp-surface2)] bg-[var(--ctp-surface0)] hover:bg-[var(--ctp-surface1)] relative flex justify-between items-start"
                         >
-                            <span className="block text-[var(--ctp-text)] font-semibold">{r.title}</span>
-                            <span className="text-xs text-[var(--ctp-subtext0)] bg-[var(--ctp-crust)] px-2 py-0.5 rounded-full">
-                             {r.category}
-                            </span>
+                            <div>
+                                <span className="block text-[var(--ctp-text)] font-semibold">{r.title}</span>
+                                <span className="text-xs text-[var(--ctp-subtext0)] bg-[var(--ctp-crust)] px-2 py-0.5 rounded-full">
+                            {r.category}
+                             </span>
+                            </div>
+                            <button
+                                onClick={(e) => toggleFavorite(e, r.id)}
+                                className="text-yellow-400 text-lg"
+                                title="Als Favorit markieren"
+                            >
+                                {favorites.includes(r.id) ? <FaStar /> : <FaRegStar />}
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -118,6 +162,13 @@ const Cookbook = () => {
             <div className="w-full md:w-2/3 bg-[var(--ctp-surface0)] p-4 rounded-xl shadow flex flex-col justify-between min-h-[400px]">
                 {selected ? (
                     <div>
+                        {selected.image && (
+                            <img
+                                src={selected.image}
+                                alt={selected.title}
+                                className="w-full h-48 object-cover rounded-lg mb-4"
+                            />
+                        )}
                         <h2 className="text-2xl font-bold text-[var(--ctp-peach)]">{selected.title}</h2>
                         <p className="text-sm text-[var(--ctp-subtext0)]">{selected.category}</p>
                         <h3 className="mt-4 font-semibold text-[var(--ctp-yellow)]">Zutaten:</h3>
@@ -142,6 +193,7 @@ const Cookbook = () => {
                                 Bearbeiten
                             </button>
                         </div>
+                        <RecipeComments recipeId={selected.id} />
                     </div>
                 ) : (
                     <p className="text-[var(--ctp-subtext1)] italic">Wähle ein Rezept aus der Liste</p>

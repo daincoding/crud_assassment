@@ -7,6 +7,8 @@ CRUD Assessment Project
 - React + Vite (JS)
 - Tailwind ( npm install tailwindcss @tailwindcss/vite )
 - React-Router ( npm install react-router-dom )
+- React Icons ( npm install react-icons )
+- Framer Motion ( npm install framer-motion )
 
 ## If loading of public test Data doesnt work...
 
@@ -105,3 +107,11 @@ localStorage.setItem("recipes", JSON.stringify([
 ## Safety Push - Main User Storys
 
 Commit: c5f4287 ( Commit Nr. 5 )
+
+## Optional Bonus
+
+- Favorite Makierung mit React Icons
+- Avatar 
+- Showcase in HomeScreen
+- Reset Button im Homescreen
+- Animationen mit Framer Motion

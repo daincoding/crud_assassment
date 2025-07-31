@@ -11,7 +11,8 @@ const NewRecipe = () => {
         category: "",
         ingredients: "",
         description: "",
-        preparation: ""
+        preparation: "",
+        image: ""
     });
 
     useEffect(() => {
@@ -21,7 +22,8 @@ const NewRecipe = () => {
             if (existing) {
                 setForm({
                     ...existing,
-                    ingredients: existing.ingredients.join(", ")
+                    ingredients: existing.ingredients.join(", "),
+                    image: existing.image || ""
                 });
             }
         }
@@ -43,7 +45,8 @@ const NewRecipe = () => {
             category: form.category,
             ingredients: form.ingredients.split(",").map(i => i.trim()),
             description: form.description,
-            preparation: form.preparation
+            preparation: form.preparation,
+            image: form.image || ""
         };
 
         const stored = JSON.parse(localStorage.getItem("recipes")) || [];
@@ -73,6 +76,20 @@ const NewRecipe = () => {
                 <textarea name="ingredients" value={form.ingredients} onChange={handleChange} placeholder="Zutaten (kommagetrennt)" required className="w-full p-2 rounded bg-[var(--ctp-surface1)] text-[var(--ctp-text)]" />
                 <textarea name="description" value={form.description} onChange={handleChange} placeholder="Kurzbeschreibung" required className="w-full p-2 rounded bg-[var(--ctp-surface1)] text-[var(--ctp-text)]" />
                 <textarea name="preparation" value={form.preparation} onChange={handleChange} placeholder="Zubereitung" required className="w-full p-2 rounded bg-[var(--ctp-surface1)] text-[var(--ctp-text)]" />
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            setForm((prev) => ({ ...prev, image: reader.result }));
+                        };
+                        reader.readAsDataURL(file);
+                    }}
+                    className="w-full p-2 rounded bg-[var(--ctp-surface1)] text-[var(--ctp-text)]"
+                />
                 <button type="submit" className="bg-[var(--ctp-green)] text-[var(--ctp-base)] px-4 py-2 rounded font-bold">
                     {id ? "Änderungen speichern" : "Speichern"}
                 </button>

@@ -11,7 +11,8 @@
       "Gewürze"
     ],
     "description": "Ein klassisches italienisches Gericht.",
-    "preparation": "Zwiebel anbraten, Hack dazu, Tomaten rein, köcheln lassen. Nudeln kochen, alles mischen."
+    "preparation": "Zwiebel anbraten, Hack dazu, Tomaten rein, köcheln lassen. Nudeln kochen, alles mischen.",
+    "image": "/images/spaghetti.png"
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
       "Mürbeteigboden"
     ],
     "description": "Ein cremiger Klassiker unter den Kuchen.",
-    "preparation": "Alle Zutaten vermengen, auf Mürbeteigboden geben, bei 180°C ca. 50 Minuten backen."
+    "preparation": "Alle Zutaten vermengen, auf Mürbeteigboden geben, bei 180°C ca. 50 Minuten backen.",
+    "image": "/images/kaesekuchen.png"
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
       "Hähnchenbrust"
     ],
     "description": "Ein frischer Salat mit würzigem Dressing.",
-    "preparation": "Hähnchen anbraten, Salat anrichten, Dressing und Toppings hinzufügen."
+    "preparation": "Hähnchen anbraten, Salat anrichten, Dressing und Toppings hinzufügen.",
+    "image": "/images/ceaser.png"
   },
   {
     "id": 4,
@@ -53,7 +56,8 @@
       "Brühe"
     ],
     "description": "Wärmende Suppe für kalte Tage.",
-    "preparation": "Gemüse schneiden, in Brühe ca. 30 Minuten kochen lassen."
+    "preparation": "Gemüse schneiden, in Brühe ca. 30 Minuten kochen lassen.",
+    "image": "/images/gemuesesuppe.png"
   },
   {
     "id": 5,
@@ -67,7 +71,8 @@
       "Butter zum Braten"
     ],
     "description": "Schnell gemacht und vielseitig belegbar.",
-    "preparation": "Alles verrühren, in Pfanne ausbacken, nach Wunsch füllen."
+    "preparation": "Alles verrühren, in Pfanne ausbacken, nach Wunsch füllen.",
+    "image": "/images/pfannenkuchen.png"
   },
   {
     "id": 6,
@@ -81,6 +86,7 @@
       "Knoblauch"
     ],
     "description": "Herzhaftes veganes Gericht mit indischem Touch.",
-    "preparation": "Zwiebel & Knoblauch anbraten, Linsen & Kokosmilch dazu, würzen & köcheln."
+    "preparation": "Zwiebel & Knoblauch anbraten, Linsen & Kokosmilch dazu, würzen & köcheln.",
+    "image": "/images/linsencurry.png"
   }
 ]
