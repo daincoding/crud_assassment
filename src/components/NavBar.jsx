@@ -9,6 +9,7 @@ function NavBar() {
                 <ul className="flex space-x-6 text-sm font-medium">
                     <li><Link to="/home" className="hover:text-[var(--ctp-mauve)]">Dashboard</Link></li>
                     <li><Link to="/kochbuch" className="hover:text-[var(--ctp-mauve)]">Kochbuch</Link></li>
+                    <li><Link to="/neu" className="hover:text-[var(--ctp-mauve)]">Neues Rezept</Link></li>
                 </ul>
             </div>
         </nav>

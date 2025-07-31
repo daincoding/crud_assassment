@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import './App.css';
 import Home from "./pages/Home.jsx";
 import Cookbook from "./pages/Cookbook.jsx";
+import NewRecipe from "./pages/NewRecipe.jsx";
 
 
 
@@ -15,6 +16,8 @@ export default function App() {
                 <Routes>
                     <Route path="/home/" element={<Home />} />
                     <Route path="/kochbuch/" element={<Cookbook />} />
+                    <Route path="/neu" element={<NewRecipe />} />
+                    <Route path="/edit/:id" element={<NewRecipe />} />
                 </Routes>
             </div>
         </>
